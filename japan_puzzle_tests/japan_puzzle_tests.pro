@@ -14,13 +14,15 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += $$(GOOGLETEST)/src/gtest_main.cc \
-        ../japan_puzzle/puzzle_helper.cpp \
-    helper_tests.cpp \
-    standart_japan_condition_test.cpp \
+    tests/helper_tests.cpp \
+    tests/standart_japan_condition_test.cpp \
+    tests/standart_nono_test.cpp \
+    ../japan_puzzle/puzzle_helper.cpp \
     ../japan_puzzle/simple_row_column_logic_solver_rectangular.cpp \
     ../japan_puzzle/simple_solver_rectangular_puzzle.cpp \
     ../japan_puzzle/standart_japan_puzzle.cpp \
     ../japan_puzzle/standart_japan_puzzle_condition_line_condition.cpp
+
 
 win32:CONFIG(release, debug|release): LIBS += -L$$(GOOGLETESTLIB) -lgtest
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$(GOOGLETESTLIB) -lgtest
@@ -46,3 +48,4 @@ HEADERS += \
     ../japan_puzzle/simple_solver_rectangular_puzzle.h \
     ../japan_puzzle/standart_japan_puzzle.h \
     ../japan_puzzle/standart_japan_puzzle_line_condition.h
+

@@ -24,7 +24,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-class standart_condition_test
+class standart_condition_test :public ::testing::Test
 {
 public:
     void generator_check(const std::list<std::vector<uint8_t>>& results, std::vector<size_t>& vec_lines_length, size_t length)
