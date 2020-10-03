@@ -22,7 +22,7 @@
 #include "standart_japan_puzzle.h"
 #include "standart_japan_puzzle_line_condition.h"
 
-standart_japan_puzzle::standart_japan_puzzle(const std::vector<std::vector<size_t> > &row_cond, const std::vector<std::vector<size_t> > &column_cond)
+standart_japan_puzzle::standart_japan_puzzle(const std::vector<std::vector<size_t> > &row_cond, const std::vector<std::vector<size_t> > &column_cond) : simple_solver_rectangular_puzzle(1)
 {
     puzzle_conditions conditions;
     size_t rows = row_cond.size();

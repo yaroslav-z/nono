@@ -49,6 +49,8 @@ protected:
     bool update_by_row(line_length row);
     bool update_by_column(line_length column);
 
+    bool find_unknown_cell(size_t& row, size_t& column);
+
 protected:
     std::vector<std::vector<uint8_t> > m_field;
     std::queue<task> m_task_queue;

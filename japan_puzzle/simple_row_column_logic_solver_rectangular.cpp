@@ -72,9 +72,10 @@ bool simple_row_column_logic_solver_rectangular::start_row_column_logic() {
 bool simple_row_column_logic_solver_rectangular::run_row_column_logic() {
   while (!m_task_queue.empty()) {
     auto task = m_task_queue.front();
-    m_task_queue.pop();
-    if (!task())
+    if (!task()) {
       return false;
+    }
+    m_task_queue.pop();
   }
   return true;
 }
@@ -125,5 +126,19 @@ simple_row_column_logic_solver_rectangular::update_by_column(line_length column)
         }
       }
     }
-  return true;
+    return true;
+}
+
+bool simple_row_column_logic_solver_rectangular::find_unknown_cell(size_t &row, size_t &column)
+{
+    for (size_t r = 0; r < m_field.size(); r++) {
+      for (size_t c = 0; c < m_field[0].size(); c++) {
+        if (m_field[r][c] == unknown_color) {
+          row = r;
+          column = c;
+          return true;
+        }
+      }
+    }
+    return false;
 }

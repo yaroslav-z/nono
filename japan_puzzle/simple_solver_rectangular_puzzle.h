@@ -24,13 +24,33 @@
 
 #include "simple_row_column_logic_solver_rectangular.h"
 #include "simple_solution_generator.h"
+#include <stack>
 
 class simple_solver_rectangular_puzzle
     : public simple_row_column_logic_solver_rectangular,
       public simple_solution_generator<std::vector<std::vector<uint8_t>>> {
+public:
+    simple_solver_rectangular_puzzle(size_t colors) : simple_row_column_logic_solver_rectangular()
+    {
+        num_colors = colors;
+        inited=false;
+        finished = false;
+    }
+
+    void set_tracing_path(const std::string& path)
+    {
+        tracing_path=path;
+    }
+
 protected:
   bool
   generate_next_solution(std::vector<std::vector<uint8_t>> &solution) override;
+
+  std::stack<std::shared_ptr<simple_solver_rectangular_puzzle> > generators;
+  size_t num_colors;
+  bool inited;
+  bool finished;
+  std::string tracing_path;
 };
 
 #endif // SIMPLE_SOLVER_RECTANGULAR_PUZZLE_H
